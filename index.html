@@ -1,0 +1,221 @@
+<!-- HERO + COUNTDOWN (Webflow Embed) -->
+<section class="lizy-hero">
+  <div class="lizy-hero__grid">
+    <div class="lizy-hero__left">
+      <p class="lizy-eyebrow">Van auto tot trottinet…</p>
+
+      <h1 class="lizy-h1">Alles wat je moet weten over het mobiliteitsbudget</h1>
+
+      <!-- H2-like countdown block -->
+      <div class="lizy-countdown-wrap" role="group" aria-label="Aftellen tot het webinar">
+        <h2 class="lizy-h2">Webinar start over</h2>
+
+        <div class="lizy-countdown" aria-live="polite" aria-atomic="true"
+             data-target="2025-09-15T12:00:00+02:00">
+          <!-- Days -->
+          <div class="lizy-unit" data-unit="days">
+            <span class="lizy-label">Dagen</span>
+            <div class="lizy-ticker">
+              <span class="lizy-value current">00</span>
+              <span class="lizy-value next" aria-hidden="true">00</span>
+            </div>
+          </div>
+          <!-- Hours -->
+          <div class="lizy-unit" data-unit="hours">
+            <span class="lizy-label">Uren</span>
+            <div class="lizy-ticker">
+              <span class="lizy-value current">00</span>
+              <span class="lizy-value next" aria-hidden="true">00</span>
+            </div>
+          </div>
+          <!-- Minutes -->
+          <div class="lizy-unit" data-unit="minutes">
+            <span class="lizy-label">Minuten</span>
+            <div class="lizy-ticker">
+              <span class="lizy-value current">00</span>
+              <span class="lizy-value next" aria-hidden="true">00</span>
+            </div>
+          </div>
+          <!-- Seconds -->
+          <div class="lizy-unit" data-unit="seconds">
+            <span class="lizy-label">Seconden</span>
+            <div class="lizy-ticker">
+              <span class="lizy-value current">00</span>
+              <span class="lizy-value next" aria-hidden="true">00</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="lizy-helper">
+          Schrijf u in voor ons webinar om alles te weten te komen over het mobiliteitsbudget.
+        </p>
+      </div>
+    </div>
+
+    <div class="lizy-hero__right">
+      <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg"
+           alt="Webinar over het mobiliteitsbudget" class="lizy-hero__img" />
+    </div>
+  </div>
+</section>
+
+<style>
+/* Global */
+body { background: #ffffff; font-family: 'Nunito', sans-serif; }
+:root{
+  /* Faciles à ajuster si besoin */
+  --unit-w: 160px;      /* largeur fixe d'une case */
+  --unit-h: 116px;      /* hauteur fixe d'une case */
+  --ticker-h: 48px;     /* hauteur de la fenêtre du ticker */
+  --value-size: 36px;   /* taille du chiffre */
+}
+
+/* Hero */
+.lizy-hero { padding: clamp(24px, 6vw, 64px) 0; background: #ffffff; }
+.lizy-hero__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(16px, 4vw, 48px);
+  align-items: center;
+}
+@media (max-width: 960px){ .lizy-hero__grid { grid-template-columns: 1fr; } }
+
+.lizy-eyebrow { margin: 0 0 8px; opacity: .7; }
+.lizy-h1 { margin: 0 0 16px; line-height: 1.05; font-weight: 800; font-size: clamp(32px, 6vw, 72px); }
+.lizy-h2 { margin: 0 0 8px; font-size: clamp(18px, 2.2vw, 24px); font-weight: 700; }
+
+/* Countdown */
+.lizy-countdown-wrap { margin-top: 8px; }
+.lizy-helper { margin: 10px 0 0; opacity: .85; }
+
+.lizy-countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 720px;
+}
+@media (max-width: 640px){ .lizy-countdown { grid-template-columns: repeat(2, 1fr); } }
+
+/* Case unitaire : largeur/hauteur fixes + centrage */
+.lizy-unit {
+  width: var(--unit-w);
+  height: var(--unit-h);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 12px;
+  border-radius: 18px;
+  background: #fafafa;
+}
+.lizy-label { display: block; font-size: 13px; opacity: .75; margin: 0; white-space: nowrap; }
+
+/* Ticker : fenêtre d'affichage stricte (anti-clip) */
+.lizy-ticker { position: relative; height: var(--ticker-h); overflow: hidden; }
+.lizy-value {
+  display: block;
+  height: var(--ticker-h);
+  line-height: var(--ticker-h); /* égal à la hauteur -> plus de texte coupé */
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  font-size: var(--value-size);
+  text-align: center;
+  background: linear-gradient(90deg, #FF3366, #FF5733);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  will-change: transform;
+}
+.lizy-ticker .current { transform: translateY(0); }
+.lizy-ticker .next { position: absolute; left: 0; right: 0; top: 100%; }
+
+/* Animation */
+.lizy-ticker.is-anim .current,
+.lizy-ticker.is-anim .next { transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1); }
+.lizy-ticker.is-anim .current { transform: translateY(-100%); }
+.lizy-ticker.is-anim .next { transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .lizy-ticker.is-anim .current,
+  .lizy-ticker.is-anim .next { transition: none; }
+}
+
+/* Image */
+.lizy-hero__img { width: 100%; height: clamp(260px, 40vw, 520px); object-fit: cover; border-radius: 26px; display: block; }
+</style>
+
+<script>
+(() => {
+  const root = document.querySelector('.lizy-countdown');
+  if (!root) return;
+
+  const targetAttr = root.getAttribute('data-target');
+  const targetDate = new Date(targetAttr);
+
+  const units = {
+    days:    { el: root.querySelector('.lizy-unit[data-unit="days"] .lizy-ticker'),    last: null },
+    hours:   { el: root.querySelector('.lizy-unit[data-unit="hours"] .lizy-ticker'),   last: null },
+    minutes: { el: root.querySelector('.lizy-unit[data-unit="minutes"] .lizy-ticker'), last: null },
+    seconds: { el: root.querySelector('.lizy-unit[data-unit="seconds"] .lizy-ticker'), last: null }
+  };
+
+  function pad(n){ return String(n).padStart(2, '0'); }
+
+  function setTicker(ticker, value, announce){
+    const cur = ticker.querySelector('.current');
+    const next = ticker.querySelector('.next');
+    next.textContent = pad(value);
+
+    ticker.classList.add('is-anim');
+
+    setTimeout(() => {
+      cur.textContent = next.textContent;
+      ticker.classList.remove('is-anim');
+      cur.style.transform = '';
+      next.style.transform = '';
+      next.style.top = '100%';
+      if (announce) {
+        root.setAttribute('aria-label', `Nog ${values.days} dagen, ${values.hours} uur, ${values.minutes} minuten en ${values.seconds} seconden`);
+      }
+    }, 260);
+  }
+
+  let values = { days:0, hours:0, minutes:0, seconds:0 };
+
+  function compute(){
+    const now = new Date();
+    const diff = targetDate - now;
+    if (diff <= 0) {
+      values = { days:0, hours:0, minutes:0, seconds:0 };
+      Object.values(units).forEach(u => {
+        u.el.querySelector('.current').textContent = '00';
+        u.el.querySelector('.next').textContent = '00';
+        u.el.classList.remove('is-anim');
+      });
+      root.setAttribute('aria-label', 'Het webinar is gestart');
+      return;
+    }
+
+    const total = Math.floor(diff / 1000);
+    const d = Math.floor(total / 86400);
+    const h = Math.floor((total % 86400) / 3600);
+    const m = Math.floor((total % 3600) / 60);
+    const s = total % 60;
+
+    const newValues = { days:d, hours:h, minutes:m, seconds:s };
+
+    for (const key of ['days','hours','minutes','seconds']) {
+      if (units[key].last === null) {
+        units[key].el.querySelector('.current').textContent = pad(newValues[key]);
+      } else if (newValues[key] !== units[key].last) {
+        setTicker(units[key].el, newValues[key], key === 'minutes');
+      }
+      units[key].last = newValues[key];
+    }
+    values = newValues;
+
+    setTimeout(compute, 1000 - (Date.now() % 1000));
+  }
+
+  compute();
+})();
+</script>
